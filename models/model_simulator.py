@@ -55,18 +55,23 @@ class SVMStressDetectorSimulator:
         self.negative_patterns = [
             'gracias', 'agradecido', 'agradecida', 'feliz', 'contento', 'contenta',
             'bien', 'bueno', 'buena', 'excelente', 'perfecto', 'perfecta',
-            'hermoso', 'hermosa', 'maravilloso', 'maravillosa'
+            'hermoso', 'hermosa', 'maravilloso', 'maravillosa',
+            'tranquilo', 'tranquila', 'relajado', 'relajada', 'calma', 'calmo',
+            'alegre', 'alegría', 'sonrío', 'sonreír', 'positivo', 'positiva',
+            'esperanza', 'optimista', 'bendición', 'bendecido', 'bendecida',
+            'amor', 'cariño', 'abrazo', 'beso', 'familia', 'amigos',
+            'éxito', 'logro', 'victoria', 'ganado', 'conseguido'
         ]
         
-        # Pesos para el cálculo
+        # Pesos para el cálculo (ajustados para mayor balance)
         self.weights = {
-            'high_weight': 0.3,
-            'medium_weight': 0.2,
-            'low_weight': 0.1,
-            'negative': -0.25,
-            'length_factor': 0.05,
-            'exclamation_factor': 0.1,
-            'caps_factor': 0.1
+            'high_weight': 0.25,
+            'medium_weight': 0.15,
+            'low_weight': 0.08,
+            'negative': -0.35,
+            'length_factor': 0.03,
+            'exclamation_factor': 0.08,
+            'caps_factor': 0.08
         }
     
     def clean_text(self, text: str) -> str:
@@ -139,8 +144,8 @@ class SVMStressDetectorSimulator:
         # Extraer características
         features = self.extract_features(text)
         
-        # Calcular probabilidad base
-        base_probability = 0.1  # Probabilidad base baja
+        # Calcular probabilidad base (más balanceada)
+        base_probability = 0.3  # Probabilidad base neutral
         
         # Agregar puntuación de estrés
         base_probability += features['stress_score']
