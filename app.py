@@ -16,7 +16,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "models"))
 from models.model_simulator import stress_detector_simulator
 
 app = Flask(__name__)
-CORS(app) # Habilitar CORS para permitir solicitudes desde el frontend
+CORS(app, resources={r"/api/*": {"origins": "https://diegofernandolojantn.github.io"}})
 
 # Configuración global
 app.config["SECRET_KEY"] = "stress_detector_2024"
