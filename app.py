@@ -16,7 +16,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "models"))
 from models.model_simulator import stress_detector_simulator
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "https://diegofernandolojantn.github.io"}})
+CORS(app, 
+     origins=["https://diegofernandolojantn.github.io"],
+     methods=["GET", "POST", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization"],
+     supports_credentials=True)
 
 # Configuración global
 app.config["SECRET_KEY"] = "stress_detector_2024"
