@@ -1,3 +1,5 @@
+setuptools
+wheel
 Flask==2.3.3
 Flask-CORS==4.0.0
 numpy==1.24.3
@@ -12,5 +14,4 @@ seaborn==0.12.2
 plotly==5.15.0
 requests==2.31.0
 Werkzeug==2.3.7
-setuptools>=42
-wheel
+
